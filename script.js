@@ -1,3 +1,5 @@
+
+
 class Response {
   constructor(name) {
     this.name = name;
@@ -31,6 +33,8 @@ const responses = [
   new Response("💡 Lightbulb moment: maybe don’t.")
 ];
 
+let finalAnswer = null
+
 document.querySelector('#askBtn').addEventListener('click', getValue);
 
 function getValue() {
@@ -44,7 +48,7 @@ function getValue() {
    
 
   const randomIndex = Math.floor(Math.random() * responses.length);
-  const finalAnswer = responses[randomIndex];
+   finalAnswer = responses[randomIndex];
 
 
 
@@ -54,3 +58,9 @@ function getValue() {
   },1000)
 
 }
+
+document.addEventListener('keyup', function(event) {
+  if (event.key === 'Enter') {
+    getValue(); // Generate a new response on Enter
+  }
+});
