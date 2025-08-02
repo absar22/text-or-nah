@@ -46,6 +46,45 @@ function getValue() {
     return;
   }
    
+  // AI Like logic
+  const input = inputVal.toLowerCase()
+   
+    const sadWords = ["cry", "heartbreak", "rejected", "miss", "alone", "ghosted"];
+  const happyWords = ["love", "date", "texted", "yes", "cute", "kiss"];
+
+  let mood = 'neutral'
+  
+  for(let word of sadWords){
+    if(input.includes(word)){
+      mood = 'sad'
+      break
+    }
+  }
+
+  for(let word of happyWords){
+    if(input.includes(word)){
+      mood = 'happy'
+      break
+    }
+  }
+
+  if (input.includes("text") && input.includes("her")) {
+    responseEl.textContent = "📵 Bro, no. She left you on read in 2023.";
+    return;
+  } else if (input.startsWith("should i")) {
+    responseEl.textContent = "🤔 Depends. Do you want inner peace or drama?";
+    return;
+  } else if (input.startsWith("can i")) {
+    responseEl.textContent = "🧠 You can... but should you?";
+    return;
+  } else if (mood === "sad") {
+    responseEl.textContent = "💔 Aww. Let's not go down that road again.";
+    return;
+  } else if (mood === "happy") {
+    responseEl.textContent = "😊 Sounds promising. Go ahead, champ!";
+    return;
+  }
+
 
   const randomIndex = Math.floor(Math.random() * responses.length);
    finalAnswer = responses[randomIndex];
